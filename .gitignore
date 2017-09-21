@@ -27,3 +27,7 @@ generated/
 *.swp
 .vscode/launch.json
 .vscode/settings.json
+
+vendor
+vendor/
+vendor/**
