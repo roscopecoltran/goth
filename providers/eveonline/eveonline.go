@@ -5,6 +5,7 @@ package eveonline
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"net/http"
 
@@ -166,7 +167,7 @@ func (p *Provider) RefreshToken(refreshToken string) (*oauth2.Token, error) {
 func (p *Provider) Revoke(session goth.Session) error {
 	sess := session.(*Session)
 	req, err := http.NewRequest("POST", revokeURL, nil)
-	req.Header.Set("Authorization", "Bearer "+sess.Token)
+	req.Header.Set("Authorization", "Bearer "+sess.AccessToken)
 	if err != nil {
 		return err
 	}
