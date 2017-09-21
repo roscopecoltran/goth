@@ -18,6 +18,7 @@ const (
 	authPath   string = "https://login.eveonline.com/oauth/authorize/"
 	tokenPath  string = "https://login.eveonline.com/oauth/token"
 	verifyPath string = "https://login.eveonline.com/oauth/verify"
+	revokeURL  string = "https://login.eveonline.com/oauth/revoke"
 )
 
 // Provider is the implementation of `goth.Provider` for accessing eveonline.
@@ -160,4 +161,21 @@ func (p *Provider) RefreshToken(refreshToken string) (*oauth2.Token, error) {
 		return nil, err
 	}
 	return newToken, err
+}
+
+func (p *Provider) Revoke(session goth.Session) error {
+	sess := session.(*Session)
+	req, err := http.NewRequest("POST", revokeURL, nil)
+	req.Header.Set("Authorization", "Bearer "+sess.Token)
+	if err != nil {
+		return err
+	}
+	res, err := p.Client().Do(req)
+	if err != nil {
+		return err
+	}
+	if res.StatusCode != 200 {
+		return errors.New("Revoke call didn't succeed")
+	}
+	return nil
 }

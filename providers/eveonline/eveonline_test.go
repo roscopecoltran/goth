@@ -48,6 +48,36 @@ func Test_SessionFromJSON(t *testing.T) {
 	a.Equal(s.AccessToken, "1234567890")
 }
 
+func Test_SuccessfulRevoke(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder("POST", "https://login.eveonline.com/oauth/revoke", httpmock.NewStringResponder(200, ""))
+
+	a := assert.New(t)
+
+	provider := provider()
+	s, err := provider.UnmarshalSession(`{"AccessToken":"1234567890"}`)
+	a.NoError(err)
+	err = provider.Revoke(s)
+	a.NoError(err)
+}
+
+func Test_UnsuccessfulRevoke(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder("GET", "https://login.eveonline.com/oauths/revoke", httpmock.NewStringResponder(400, ""))
+
+	a := assert.New(t)
+
+	provider := provider()
+	s, err := provider.UnmarshalSession(`{"AccessToken":"1234567890"}`)
+	a.NoError(err)
+	err = provider.Revoke(s)
+	a.Error(err)
+}
+
 func provider() *eveonline.Provider {
 	return eveonline.New(os.Getenv("EVEONLINE_KEY"), os.Getenv("EVEONLINE_SECRET"), "/foo")
 }
