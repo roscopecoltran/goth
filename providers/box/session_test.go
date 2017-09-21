@@ -1,8 +1,8 @@
 package box_test
 
 import (
-	"github.com/markbates/goth"
-	"github.com/markbates/goth/providers/box"
+	"github.com/roscopecoltran/goth"
+	"github.com/roscopecoltran/goth/providers/box"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

@@ -7,8 +7,8 @@ import (
 
 	httpmock "gopkg.in/jarcoal/httpmock.v1"
 
-	"github.com/markbates/goth"
-	"github.com/markbates/goth/providers/gplus"
+	"github.com/roscopecoltran/goth"
+	"github.com/roscopecoltran/goth/providers/gplus"
 	"github.com/stretchr/testify/assert"
 )
 

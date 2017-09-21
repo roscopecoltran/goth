@@ -13,7 +13,7 @@ import (
 
 	"fmt"
 
-	"github.com/markbates/goth"
+	"github.com/roscopecoltran/goth"
 	"golang.org/x/oauth2"
 )
 

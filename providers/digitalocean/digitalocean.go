@@ -11,7 +11,7 @@ import (
 
 	"fmt"
 
-	"github.com/markbates/goth"
+	"github.com/roscopecoltran/goth"
 	"golang.org/x/oauth2"
 )
 
@@ -26,10 +26,10 @@ const (
 // one manually.
 func New(clientKey, secret, callbackURL string, scopes ...string) *Provider {
 	p := &Provider{
-		ClientKey:           clientKey,
-		Secret:              secret,
-		CallbackURL:         callbackURL,
-		providerName:        "digitalocean",
+		ClientKey:    clientKey,
+		Secret:       secret,
+		CallbackURL:  callbackURL,
+		providerName: "digitalocean",
 	}
 
 	p.config = newConfig(p, scopes)

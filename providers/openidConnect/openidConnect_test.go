@@ -1,13 +1,13 @@
 package openidConnect
 
 import (
+	"fmt"
+	"github.com/roscopecoltran/goth"
 	"github.com/stretchr/testify/assert"
+	"net/http"
+	"net/http/httptest"
 	"os"
 	"testing"
-	"fmt"
-	"github.com/markbates/goth"
-	"net/http/httptest"
-	"net/http"
 )
 
 var (

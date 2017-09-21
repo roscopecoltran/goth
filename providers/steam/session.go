@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/markbates/goth"
+	"github.com/roscopecoltran/goth"
 )
 
 // Session stores data during the auth process with Steam.
@@ -47,7 +47,7 @@ func (s *Session) Authorize(provider goth.Provider, params goth.Params) (string,
 
 	split := strings.Split(params.Get("openid.signed"), ",")
 	for _, item := range split {
-		v.Set("openid."+item, params.Get("openid." + item))
+		v.Set("openid."+item, params.Get("openid."+item))
 	}
 	v.Set("openid.mode", "check_authentication")
 

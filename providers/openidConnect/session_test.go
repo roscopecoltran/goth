@@ -1,9 +1,9 @@
 package openidConnect
 
 import (
-	"testing"
+	"github.com/roscopecoltran/goth"
 	"github.com/stretchr/testify/assert"
-	"github.com/markbates/goth"
+	"testing"
 )
 
 func Test_Implements_Session(t *testing.T) {
@@ -44,4 +44,3 @@ func Test_String(t *testing.T) {
 
 	a.Equal(s.String(), s.Marshal())
 }
-

@@ -1,8 +1,8 @@
 package slack_test
 
 import (
-	"github.com/markbates/goth"
-	"github.com/markbates/goth/providers/slack"
+	"github.com/roscopecoltran/goth"
+	"github.com/roscopecoltran/goth/providers/slack"
 	"github.com/stretchr/testify/assert"
 	httpmock "gopkg.in/jarcoal/httpmock.v1"
 	"os"
